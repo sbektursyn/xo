@@ -1,0 +1,48 @@
+.content {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+.game_table{
+  width: 156px;
+  border: 1px solid #000;
+  margin: 0 auto;
+  font-size: 0;
+}
+.cell {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  font-size: 26px;
+  border: 1px solid #000;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.cell:hover {
+  background-color: #f1f1f1;
+}
+
+.element{
+  position: absolute;
+  padding-left: 18px;
+  margin-top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
