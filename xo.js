@@ -97,21 +97,100 @@ function change(){
 
                     //не ставить туда где есть х либо о
                     //ИИ ходит в рандомное место
-
                     let num = Math.floor(Math.random() * 9);
-                    console.log(num)
 
                     var bcell = ["one","two","three","four","five","six","seven","eight","nine"];
 
                     console.log(bcell[num])
-
                     let bottext = document.getElementById(bcell[num]).querySelector('.element')
+                        
                     console.log(bottext)
-                    if (bottext == null){
-                        n.innerHTML += '<p class="element">o</p>'
+
+                    let botturn = document.getElementById(bcell[num])
+
+
+                    if (bottext !== null){
+                        //give another bottext
+                        let bottext = document.getElementById(bcell[0]).querySelector('.element')
+                        let botturn = document.getElementById(bcell[0])
+                        if (bottext == null){
+                            botturn.innerHTML += '<p class="element">o</p>'
+                        } else {
+                            let bottext = document.getElementById(bcell[1]).querySelector('.element')
+                            let botturn = document.getElementById(bcell[1])
+                            if (bottext == null){
+                                botturn.innerHTML += '<p class="element">o</p>'
+                            } else{
+                                let bottext = document.getElementById(bcell[2]).querySelector('.element')
+                                let botturn = document.getElementById(bcell[2])
+                                if (bottext == null){
+                                    botturn.innerHTML += '<p class="element">o</p>'
+                                } else{
+                                    let bottext = document.getElementById(bcell[3]).querySelector('.element')
+                                    let botturn = document.getElementById(bcell[3])
+                                    if (bottext == null){
+                                        botturn.innerHTML += '<p class="element">o</p>'
+                                    } else{
+                                        let bottext = document.getElementById(bcell[4]).querySelector('.element')
+                                        let botturn = document.getElementById(bcell[4])
+                                        if (bottext == null){
+                                            botturn.innerHTML += '<p class="element">o</p>'
+                                        } else{
+                                            let bottext = document.getElementById(bcell[5]).querySelector('.element')
+                                            let botturn = document.getElementById(bcell[5])
+                                            if (bottext == null){
+                                                botturn.innerHTML += '<p class="element">o</p>'
+                                            } else{
+                                                let bottext = document.getElementById(bcell[6]).querySelector('.element')
+                                                let botturn = document.getElementById(bcell[6])
+                                                if (bottext == null){
+                                                    botturn.innerHTML += '<p class="element">o</p>'
+                                                } else{
+                                                    let bottext = document.getElementById(bcell[7]).querySelector('.element')
+                                                    let botturn = document.getElementById(bcell[7])
+                                                    if (bottext == null){
+                                                        botturn.innerHTML += '<p class="element">o</p>'
+                                                    } else{
+                                                        let bottext = document.getElementById(bcell[8]).querySelector('.element')
+                                                        let botturn = document.getElementById(bcell[8])
+                                                        if (bottext == null){
+                                                            botturn.innerHTML += '<p class="element">o</p>'
+                                                        } else{
+                                                            let bottext = document.getElementById(bcell[9]).querySelector('.element')
+                                                            let botturn = document.getElementById(bcell[9])
+                                                            if (bottext == null){
+                                                                botturn.innerHTML += '<p class="element">o</p>'
+                                                            } else{
+                                                                return;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+
+
                     } else {
-                        return;
+                        botturn.innerHTML += '<p class="element">o</p>'
                     }
+
+
+                    
+                    /*switch (bottext){
+                        case null:
+                        botturn.innerHTML += '<p class="element">o</p>'
+                        return;
+                        default:
+                        bottext = document.getElementById(bcell[Math.floor(Math.random() * 9)]).querySelector('.element')
+                        if (bottext !== null){
+                            return bottext;  
+                        }
+                    }*/
                 }
             }
         }
