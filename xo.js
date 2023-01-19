@@ -1,4 +1,4 @@
-function mapNameMp(){
+function mapNameMp() {
     document.getElementById('content').innerHTML = '<div class="app_block" data-item="0"></div><div class="app_block" data-item="1"></div><div class="app_block" data-item="2"></div><div class="app_block" data-item="3"></div><div class="app_block" data-item="4"></div><div class="app_block" data-item="5"></div><div class="app_block" data-item="6"></div><div class="app_block" data-item="7"></div><div class="app_block" data-item="8"></div>';
 
     var items = document.getElementsByClassName("app_block");
@@ -60,12 +60,24 @@ function mapNameMp(){
 
 
 
-function mapNameAi(){
+function mapNameAi() {
     document.getElementById('content').innerHTML = '<div class="app_block" data-item="0"></div><div class="app_block" data-item="1"></div><div class="app_block" data-item="2"></div><div class="app_block" data-item="3"></div><div class="app_block" data-item="4"></div><div class="app_block" data-item="5"></div><div class="app_block" data-item="6"></div><div class="app_block" data-item="7"></div><div class="app_block" data-item="8"></div>';
         
     var items = document.getElementsByClassName("app_block");   // Коллекция элементов
     var movePlayer = true;                                      // Ход игрока
     var game = true;                                            // состояние игры
+
+    var winIndex = [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9],
+        [1,4,7],
+        [2,5,8],
+        [3,6,9],
+        [1,5,9],
+        [3,5,7]
+    ];                                          
+
 
 
     // перебираем все элементы и назначаем событие на каждую ячейку.
@@ -91,6 +103,35 @@ function mapNameAi(){
                         this.classList.add("active_x");
                         this.innerHTML = "x"
                     }
+                    // ---------------------------changed--------------------------
+
+
+                    console.log(Number(this.dataset.item)+1)
+                    var a = Number(this.dataset.item)+1;
+                    console.log(a)
+
+                    /*for (let i of winIndex) {
+                        for (let j of i) {
+                            if (j == a){
+                                winIndex.splice(winIndex.indexOf(a),1)
+                            }
+                        }
+                    }*/
+                    
+                    for (let i of winIndex) {
+                        if (winIndex[i][0] == a){
+                            inIndex.splice(i,1)
+                        }
+                    }
+                    
+
+        
+
+                    
+                    console.log(winIndex)
+                    
+                    // ---------------------------changed--------------------------
+
                     // проверка ячеек и выход
                     var result = checkMap();
                     if (result.val) {
@@ -117,22 +158,20 @@ function mapNameAi(){
         // бот ходит рандомно
         var items = document.querySelectorAll(".app_block:not(.active)");
 
-        var step = getRandomInt(items.length);
+        var step = getRandom(items.length);
 
         items[ step ].innerHTML = "0";
         items[ step ].classList.add("active");
         items[ step ].classList.add("active_o");
 
         var result = checkMap();
-        if( result.val) {
+        if (result.val) {
             setTimeout(function() {
                 exit(result);
             }, 1);
         }
 
         movePlayer = !movePlayer;
-
-        
     }
 }
 
@@ -164,8 +203,8 @@ function checkMap() {
 
     return {val: false}
 }
-
-function getRandomInt(max) {
+//???
+function getRandom(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
@@ -173,6 +212,33 @@ function exit(obj) {
     alert(obj.win + " wins");
     location.reload();
 };
+
+
+
+
+/*function botMove() {
+    // бот пытается выиграть
+    var items = document.querySelectorAll(".app_block:not(.active)");
+
+    var step = getRandom(items.length);
+
+    var steps = winIndex;
+
+
+    items[ step ].innerHTML = "0";
+    items[ step ].classList.add("active");
+    items[ step ].classList.add("active_o");
+
+    var result = checkMap();
+    if (result.val) {
+        setTimeout(function() {
+            exit(result);
+        }, 1);
+    }
+
+    movePlayer = !movePlayer;
+}*/
+
 /*for (var i = 0; i < 9; i++){
     for(var j = 0; j < 3; j++){
         if (winIndex[i][j] == a){
