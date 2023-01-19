@@ -1,34 +1,85 @@
-.content {
+body {
   display: flex;
   justify-content: center;
-  margin-top: 100px;
-}
-.game_table{
-  width: 156px;
-  border: 1px solid #000;
-  margin: 0 auto;
-  font-size: 0;
-}
-.cell {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  display: inline-block;
-  font-size: 26px;
-  border: 1px solid #000;
-  cursor: pointer;
-  vertical-align: middle;
-  text-align: center;
+  align-items: center;
 }
 
-.cell:hover {
-  background-color: #f1f1f1;
-}
-
-.element{
+.btn1 {
   position: absolute;
-  padding-left: 18px;
-  margin-top: 0;
+  margin-left: -1000px;
+  border:1.5px solid #a8a8a8;
+  border-radius: 5px;
+  width: 40px;
+  height: 20px;
+  font-size:15px;
+  cursor: pointer;
+}
+
+.btn1:hover{
+  border-color: black; 
+}
+
+.btn1:active{
+  background-color: white;
+}
+
+.btn2 {
+  position: absolute;
+  margin-left: -1000px;
+  margin-top: 50px; 
+  border:1.5px solid #a8a8a8;
+  border-radius: 5px;
+  width: 40px;
+  height: 20px;
+  font-size:15px;
+  cursor: pointer;
+}
+
+.btn2:hover{
+  border-color: black; 
+}
+
+.btn2:active{
+  background-color: white;
+}
+
+.app {
+  width: 640px;
+  height: 480px;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.app_block {
+  border: 2px solid #000;
+  width: 200px;
+  height: 130px;
+  cursor: pointer;
+
+  font-size: 60px;
+  font-family: sans-serif;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: gray;
+  border-radius: 10px;
+}
+
+.app_block.active {
+  cursor: default;
+}
+
+.app_block.active.active_o {
+  color: white;
+}
+
+.app_block.active.active_x {
+  color: white;
 }
 
 
