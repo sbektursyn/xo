@@ -118,17 +118,86 @@ function mapNameAi() {
                         }
                     }*/
                     
-                    for (let i of winIndex) {
-                        if (winIndex[i][0] == a){
-                            inIndex.splice(i,1)
+                    /*for (let u of winIndex) {
+                        for (let w of u){
+                            if (winIndex == a) {winIndex.splice(u,1);}
+                            console.log(winIndex)
                         }
+                    }*/
+                    /*var winIndex = [
+                        [1,2,3],
+                        [4,5,6],
+                        [7,8,9],
+                        [1,4,7],
+                        [2,5,8],
+                        [3,6,9],
+                        [1,5,9],
+                        [3,5,7]
+                    ]; */
+
+                    /*var mass = winIndex.indexOf(a);
+                    var free = winIndex.splice(mass,1);
+                    console.log(mass+" = mass")
+                    console.log(free)*/
+
+
+
+                    /*if (a == 1) {
+                        winIndex.splice(0,1); 
+                        winIndex.splice(2,1); 
+                        winIndex.splice(4,1);
                     }
+                    if (a == 2) {
+                        winIndex.splice(0,1); 
+                        winIndex.splice(4,1);
+                    }
+                    if (a == 3) {
+                        winIndex.splice(0,1); 
+                        winIndex.splice(5,1); 
+                        winIndex.splice(7,1);
+                    }
+                    if (a == 4) {
+                        winIndex.splice(1,1); 
+                        winIndex.splice(3,1);
+                    }
+                    if (a == 5) {
+                        winIndex.splice(1,1); 
+                        winIndex.splice(4,1); 
+                        winIndex.splice(6,1); 
+                        winIndex.splice(7,1);
+                    }
+                    if (a == 6) {
+                        winIndex.splice(1,1); 
+                        winIndex.splice(5,1);
+                    }
+                    if (a == 7) {
+                        winIndex.splice(2,1); 
+                        winIndex.splice(3,1); 
+                        winIndex.splice(7,1);
+                    }
+                    if (a == 8) {
+                        winIndex.splice(2,1); 
+                        winIndex.splice(4,1);
+                    }
+                    if (a == 9) {
+                        winIndex.splice(2,1); 
+                        winIndex.splice(5,1); 
+                        winIndex.splice(6,1);
+                    }*/
+
+
+                    /*const object = {'a': 1, 'b': 2, 'c' : 3};
+
+                    for (const [key, value] of Object.entries(winIndex)) {
+                      console.log(key, value);
+                    }*/
+
                     
 
         
 
                     
-                    console.log(winIndex)
+                    /*console.log(winIndex)*/
                     
                     // ---------------------------changed--------------------------
 
