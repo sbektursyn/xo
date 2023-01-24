@@ -9,7 +9,7 @@ function mapNameMp() {
         items[i].addEventListener("click", function() {
             var collecion = document.querySelectorAll(".app_block:not(.active)");
             if(collecion.length == 1) {
-                exit({win: "other"});
+                exit({win: "nobody"});
             }
             //проверка наличия класса актив
             if( !this.classList.contains("active") ){ 
@@ -86,8 +86,8 @@ function mapNameAi() {
             var collecion = document.querySelectorAll(".app_block:not(.active)");
 
             // проверка на ничью
-            if (collecion.length == 0) {
-                exit({win: "draw"});
+            if (collecion.length == 1) {
+                exit({win: "nobody"});
             }
 
             // проверка на значение внутри ячейки
@@ -102,13 +102,27 @@ function mapNameAi() {
                         this.classList.add("active"); //добавляем класс к элементу
                         this.classList.add("active_x");
                         this.innerHTML = "x"
+
+                        var a = Number(this.dataset.item)+1;
+                        console.log(a)
+
+                        for (let u of winIndex) {
+                            for (let w of u){
+                                if (w == a) {
+                                    var WI = winIndex.indexOf(u);
+                                    console.log(WI + " = stroki")
+                                    winIndex.splice(WI,1);
+                                    break;
+                                }
+                            }
+                        }
+                        console.log(winIndex)
                     }
                     // ---------------------------changed--------------------------
 
 
-                    console.log(Number(this.dataset.item)+1)
-                    var a = Number(this.dataset.item)+1;
-                    console.log(a)
+                    /*console.log(Number(this.dataset.item)+1)*/
+                    
 
                     /*for (let i of winIndex) {
                         for (let j of i) {
@@ -118,12 +132,7 @@ function mapNameAi() {
                         }
                     }*/
                     
-                    /*for (let u of winIndex) {
-                        for (let w of u){
-                            if (winIndex == a) {winIndex.splice(u,1);}
-                            console.log(winIndex)
-                        }
-                    }*/
+                    
                     /*var winIndex = [
                         [1,2,3],
                         [4,5,6],
@@ -223,11 +232,33 @@ function mapNameAi() {
             }
         });
     }
-    function botMove() {
+    /*function botMove() {
         // бот ходит рандомно
         var items = document.querySelectorAll(".app_block:not(.active)");
 
         var step = getRandom(items.length);
+
+        items[ step ].innerHTML = "0";
+        items[ step ].classList.add("active");
+        items[ step ].classList.add("active_o");
+
+        var result = checkMap();
+        if (result.val) {
+            setTimeout(function() {
+                exit(result);
+            }, 1);
+        }
+
+        movePlayer = !movePlayer;
+    }*/
+    function botMove() {
+        // бот пытается выиграть
+        var items = document.querySelectorAll(".app_block:not(.active)");
+
+        var step = getRandom(winIndex.length);
+
+        var steps = winIndex;
+
 
         items[ step ].innerHTML = "0";
         items[ step ].classList.add("active");
@@ -285,28 +316,7 @@ function exit(obj) {
 
 
 
-/*function botMove() {
-    // бот пытается выиграть
-    var items = document.querySelectorAll(".app_block:not(.active)");
 
-    var step = getRandom(items.length);
-
-    var steps = winIndex;
-
-
-    items[ step ].innerHTML = "0";
-    items[ step ].classList.add("active");
-    items[ step ].classList.add("active_o");
-
-    var result = checkMap();
-    if (result.val) {
-        setTimeout(function() {
-            exit(result);
-        }, 1);
-    }
-
-    movePlayer = !movePlayer;
-}*/
 
 /*for (var i = 0; i < 9; i++){
     for(var j = 0; j < 3; j++){
