@@ -104,111 +104,19 @@ function mapNameAi() {
                         this.innerHTML = "x"
 
                         var a = Number(this.dataset.item)+1;
-                        console.log(a)
+
+
 
                         for (let u of winIndex) {
                             for (let w of u){
                                 if (w == a) {
                                     var WI = winIndex.indexOf(u);
-                                    console.log(WI + " = stroki")
                                     winIndex.splice(WI,1);
                                     break;
                                 }
                             }
                         }
-                        console.log(winIndex)
                     }
-                    // ---------------------------changed--------------------------
-
-
-                    /*console.log(Number(this.dataset.item)+1)*/
-                    
-
-                    /*for (let i of winIndex) {
-                        for (let j of i) {
-                            if (j == a){
-                                winIndex.splice(winIndex.indexOf(a),1)
-                            }
-                        }
-                    }*/
-                    
-                    
-                    /*var winIndex = [
-                        [1,2,3],
-                        [4,5,6],
-                        [7,8,9],
-                        [1,4,7],
-                        [2,5,8],
-                        [3,6,9],
-                        [1,5,9],
-                        [3,5,7]
-                    ]; */
-
-                    /*var mass = winIndex.indexOf(a);
-                    var free = winIndex.splice(mass,1);
-                    console.log(mass+" = mass")
-                    console.log(free)*/
-
-
-
-                    /*if (a == 1) {
-                        winIndex.splice(0,1); 
-                        winIndex.splice(2,1); 
-                        winIndex.splice(4,1);
-                    }
-                    if (a == 2) {
-                        winIndex.splice(0,1); 
-                        winIndex.splice(4,1);
-                    }
-                    if (a == 3) {
-                        winIndex.splice(0,1); 
-                        winIndex.splice(5,1); 
-                        winIndex.splice(7,1);
-                    }
-                    if (a == 4) {
-                        winIndex.splice(1,1); 
-                        winIndex.splice(3,1);
-                    }
-                    if (a == 5) {
-                        winIndex.splice(1,1); 
-                        winIndex.splice(4,1); 
-                        winIndex.splice(6,1); 
-                        winIndex.splice(7,1);
-                    }
-                    if (a == 6) {
-                        winIndex.splice(1,1); 
-                        winIndex.splice(5,1);
-                    }
-                    if (a == 7) {
-                        winIndex.splice(2,1); 
-                        winIndex.splice(3,1); 
-                        winIndex.splice(7,1);
-                    }
-                    if (a == 8) {
-                        winIndex.splice(2,1); 
-                        winIndex.splice(4,1);
-                    }
-                    if (a == 9) {
-                        winIndex.splice(2,1); 
-                        winIndex.splice(5,1); 
-                        winIndex.splice(6,1);
-                    }*/
-
-
-                    /*const object = {'a': 1, 'b': 2, 'c' : 3};
-
-                    for (const [key, value] of Object.entries(winIndex)) {
-                      console.log(key, value);
-                    }*/
-
-                    
-
-        
-
-                    
-                    /*console.log(winIndex)*/
-                    
-                    // ---------------------------changed--------------------------
 
                     // проверка ячеек и выход
                     var result = checkMap();
@@ -252,17 +160,87 @@ function mapNameAi() {
         movePlayer = !movePlayer;
     }*/
     function botMove() {
-        // бот пытается выиграть
+
         var items = document.querySelectorAll(".app_block:not(.active)");
+        var item = Math.floor(Math.random()*winIndex.length);
+        var step = getRandom(winIndex[item].length);
+        console.log(winIndex)
 
-        var step = getRandom(winIndex.length);
 
-        var steps = winIndex;
+        let sortedwinIndex = new Map([]);
+
+        for (let m of winIndex){
+            for (let n of m){
+                let q = winIndex.indexOf(m);
+                sortedwinIndex.set(q, 0)
+            }
+        }
+
+        var free = document.getElementsByClassName("app_block active active_o");
+
+        for (let f of free){
+            let freeItem = Number(f.dataset.item)+1;
+            for (let o of winIndex){
+                for (let l of o){
+                    if (l == freeItem){
+                        var fI = winIndex.indexOf(o);
+                        sortedwinIndex.set(fI, 1)
+                    }
+                }
+            }
+        }
+
+        //здесь узнали какой 0 какой 1 в sortedwinIndex
+        for (let z = 0; z < 8; z++){
+            if (sortedwinIndex.get(z) == 1){
+
+                
+
+                for (let v of winIndex[z]){
+                    var firstStep = winIndex[z]
+                    //остановился здесь (перебираю ключи в котором есть 1)
+                    console.log(firstStep)
+                    //выходит это_____________________________
+
+                    //(3) [4, 5, 6]
+                    //(3) [4, 5, 6]
+                    //(3) [4, 5, 6]
+                    //________________________________________
 
 
+                    /*items[ firstStep ].innerHTML = "0";
+                    items[ firstStep ].classList.add("active");
+                    items[ firstStep ].classList.add("active_o");*/
+                }
+
+
+                
+
+                /*items[ firstStep ].innerHTML = "0";
+                items[ firstStep ].classList.add("active");
+                items[ firstStep ].classList.add("active_o");*/
+            }
+        }
+        //до сюда______________________________________
+
+        console.log(sortedwinIndex)
+
+
+        // бот пытается выиграть
+        
         items[ step ].innerHTML = "0";
         items[ step ].classList.add("active");
         items[ step ].classList.add("active_o");
+        
+
+        
+
+        
+    
+        
+
+
+
 
         var result = checkMap();
         if (result.val) {
@@ -303,7 +281,7 @@ function checkMap() {
 
     return {val: false}
 }
-//???
+
 function getRandom(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
